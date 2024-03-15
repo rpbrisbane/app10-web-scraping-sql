@@ -8,6 +8,7 @@ import time
 URL = "https://programmer100.pythonanywhere.com/tours/"
 HEADERS = HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+
 connection = sqlite3.connect("data.db")
 
 
@@ -46,6 +47,7 @@ class Database:
         self.connection = sqlite3.connect(database_path)
 
     def store(self, extracted):
+        """Stores data into a database"""
         row = extracted.split(",")
         row = [item.strip() for item in row]
         cursor = self.connection.cursor()
@@ -53,6 +55,7 @@ class Database:
         self.connection.commit()
 
     def read(self, extracted):
+        """Reads data inside a database"""
         row = extracted.split(",")
         row = [item.strip() for item in row]
         band, city, date = row
